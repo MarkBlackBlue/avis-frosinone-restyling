@@ -1,5 +1,6 @@
 # avis-frosinone-restyling
 Repository restyling sito Avis Comunale di Frosinone
+
 SEZIONE 1 — PIANO DI LAVORO DEL TEAM
 Fase 1 — Ricerca parallela (giorno 1–2)
 Researcher Agent (Gemini) e SEO/AI Agent (Perplexity) lavorano in parallelo. Gemini fa benchmark dei migliori siti AVIS italiani e internazionali, analisi della struttura dei contenuti, best practice di associazioni no-profit. Perplexity esegue la ricerca keyword (SEO classico) e la keyword research orientata alle AI (GEO — Generative Engine Optimization): quali domande su donazione sangue + Frosinone vengono poste a ChatGPT/Claude/Gemini, e quali fonti vengono citate.
