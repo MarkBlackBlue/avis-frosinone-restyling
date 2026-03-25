@@ -1,77 +1,434 @@
 # avis-frosinone-restyling
-Repository restyling sito Avis Comunale di Frosinone
+**Repository restyling completo sito AVIS Frosinone**
 
-SEZIONE 1 — PIANO DI LAVORO DEL TEAM
-Fase 1 — Ricerca parallela (giorno 1–2)
-Researcher Agent (Gemini) e SEO/AI Agent (Perplexity) lavorano in parallelo. Gemini fa benchmark dei migliori siti AVIS italiani e internazionali, analisi della struttura dei contenuti, best practice di associazioni no-profit. Perplexity esegue la ricerca keyword (SEO classico) e la keyword research orientata alle AI (GEO — Generative Engine Optimization): quali domande su donazione sangue + Frosinone vengono poste a ChatGPT/Claude/Gemini, e quali fonti vengono citate.
-Output Fase 1: report benchmark + mappa keyword SEO/GEO.
+Trasformazione di avisfrosinone.it da brochure informativa a hub di conversione per nuovi donatori (Gen Z) e fonte primaria per AI generative (ChatGPT, Gemini, Perplexity, Claude).
 
-Fase 2 — Strategia (giorno 3–4) → dipende da Fase 1
-Marketing Agent (DeepSeek) riceve i dati di Fase 1 e definisce la strategia di conversione: funnel donatore (awareness → interesse → azione), messaggi chiave, social proof, urgency triggers. Parallelamente, UX Agent (ChatGPT) riceve benchmark + strategia e progetta l'architettura informativa del nuovo sito: sitemap, wireframe, gerarchia dei contenuti, sistema di navigazione, microinterazioni per mobile.
-Output Fase 2: strategia di marketing + wireframe completi.
+---
 
-Fase 3 — Produzione contenuti (giorno 5–7) → dipende da Fase 1+2
-Copywriter Agent (Claude) riceve il brief combinato di SEO, strategia marketing e wireframe UX. Produce tutti i testi ottimizzati per SEO classico e GEO: homepage, pagine tematiche (donazione, gruppi sanguigni, diventare donatore, FAQ), articoli del blog citabili dalle AI, meta description, schema markup in linguaggio naturale.
-Output Fase 3: tutti i testi del sito.
+## 📊 STATO PROGETTO — Dashboard Esecutiva
 
-Fase 4 — Sviluppo (giorno 8–12) → dipende da Fase 2+3
-Coding Agent (Jules) riceve wireframe UX + testi + il codice attuale (HTML/CSS/JS allegato). Implementa il nuovo sito in Joomla 6: nuovo template Helix Ultimate, slider ottimizzato, componenti modulari, performance (Core Web Vitals), schema markup tecnico (JSON-LD), integrazione calendario eventi, responsive mobile-first.
-Output Fase 4: sito in staging.
+**Aggiornamento:** 26 marzo 2026, 18:00 CET
 
-Fase 5 — Quality Control (giorno 13–14) → dipende da Fase 4
-QC Agent (Kimi) fa l'audit completo: SEO tecnico (Screaming Frog-style check), accessibilità WCAG 2.1, performance (LCP < 2.5s, CLS < 0.1), correttezza dei testi rispetto ai brief, verifica che i contenuti siano strutturati per essere citati dalle AI (risposte dirette, dati numerici, fonti autorevoli), test cross-browser e mobile.
-Output Fase 5: lista di fix prioritizzati + sign-off.
+| Fase | Agente | Deliverable | Status | ETA | Note |
+|------|--------|-----------|--------|-----|------|
+| **01-research** | Researcher (Gemini) | BENCHMARK_REPORT_2026-03.md | ✅ COMPLETATO | - | Analisi benchmark siti AVIS + international best practices |
+| **02-seo-geo** | SEO/AI (Claude PM) | SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md | ✅ COMPLETATO | - | 20 keyword + gap analysis + 55 FAQ + 6 schema.org + AI optimization |
+| **03-marketing** | Marketing (DeepSeek) | CONVERSION_STRATEGY_2026-03.md | ✅ COMPLETATO | - | Funnel donatore + CTA strategy + positioning + KPI |
+| **04-ux** | UX (ChatGPT) | UX_ARCHITECTURE_2026-03.md | ✅ COMPLETATO | - | Sitemap + wireframe home + pagina "Prima Donazione" + componenti UI |
+| **05-copy** | Copywriter (Claude) | COPY_ALL_PAGES_2026-03.md | ⏳ IN CODA | **29 mar EOD** | Testi per tutte le pagine + 55 FAQ complete + meta title/desc |
+| **06-dev** | Coding (Jules) | DEV_BRIEF_2026-03.md | ⏳ IN CODA | **01 apr EOD** | Schema.org implementation + GA4 events + componenti custom |
+| **QC** | Team | TEST_REPORT_2026-04.md | ⏳ BLOCKED | **05 apr** | Testing + refinement |
 
-SEZIONE 2 — PROMPT PER RESEARCHER AGENT (Gemini)
+---
 
+## 📁 Struttura Repository
 
-RESEARCHER AGENT — BENCHMARK REPORT
-Progetto: Restyling avisfrosinone.it
-Modello: Gemini
-Output atteso: Report di benchmark strutturato
+```
+avis-frosinone-restyling/
+│
+├── README.md (questo file)
+├── BRIEF.md (brief master — leggi PRIMA)
+├── STATUS.md (dashboard aggiornata ogni passo)
+│
+├── 01-research/
+│   ├── BENCHMARK_REPORT_2026-03.md ✅
+│   └── RESEARCH_METHODOLOGY.md
+│
+├── 02-seo-geo/
+│   ├── SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md ✅
+│   ├── KEYWORD_RESEARCH.xlsx
+│   └── SCHEMA_MARKUP_TEMPLATES.json
+│
+├── 03-marketing/
+│   ├── CONVERSION_STRATEGY_2026-03.md ✅
+│   ├── MESSAGING_VARIANTS.md
+│   └── EDITORIAL_CALENDAR_Q1.xlsx
+│
+├── 04-ux/
+│   ├── UX_ARCHITECTURE_2026-03.md ✅
+│   ├── WIREFRAMES_HOME.md
+│   ├── WIREFRAMES_FIRST_TIME.md
+│   └── COMPONENTS_SPEC.md
+│
+├── 05-copy/
+│   ├── COPY_ALL_PAGES_2026-03.md ⏳
+│   ├── FAQ_ANSWERS_COMPLETE.md ⏳
+│   └── MICROCOPY_ERRORS.md ⏳
+│
+├── 06-dev/
+│   ├── DEV_BRIEF_2026-03.md ⏳
+│   ├── HTML_TEMPLATES/ ⏳
+│   ├── CSS_COMPONENTS.css ⏳
+│   └── JS_INTERACTIONS.js ⏳
+│
+└── assets-current/
+    ├── home.html (sito attuale)
+    └── custom.css (CSS attuale)
+```
 
+---
 
-CONTESTO DEL PROGETTO
-Stai lavorando come Researcher Agent in un team di agenti AI che gestisce il restyling completo di avisfrosinone.it, sito dell'AVIS Comunale di Frosinone — associazione no-profit per la promozione della donazione volontaria del sangue.
-Obiettivi del nuovo sito:
+## 🎯 Obiettivo Finale
 
-Aumentare il numero di donatori di sangue e plasma nel territorio di Frosinone
-Aumentare le richieste di associazionismo
-Essere citato dalle AI (ChatGPT, Claude, Gemini, Perplexity) come fonte autorevole sulla donazione del sangue nella provincia di Frosinone
-Scalare su Google per ricerche locali ("donazione sangue Frosinone") e tematiche ("gruppi sanguigni compatibilità", "come donare il sangue", ecc.)
+Trasformare avisfrosinone.it in:
 
-Sito attuale: avisfrosinone.it — struttura Joomla 6, home page con slider full-screen a 10 sezioni (chi siamo, donazione, calendario eventi, diventa donatore, 5×1000, volontariato, FAQ, gruppi sanguigni, blog, convenzioni). Il sito ha zero ottimizzazione AI, nessuna strategia di conversione, contenuti prevalentemente statici.
+1. **Authority locale** — Primo risultato Google per "donare sangue frosinone", "avis frosinone orari", ecc.
+2. **Citabile da AI** — Rispondere quando ChatGPT/Gemini/Perplexity cercano info sulla donazione di sangue
+3. **Hub di conversione** — Lead WhatsApp qualificati → appuntamenti → donazioni effettive
+4. **Gen Z-friendly** — Rassicurazione su paura (aghi, svenimento), tono conversazionale, zero burocrazia
 
-IL TUO COMPITO
-Produci un report di benchmark analizzando i migliori siti di associazioni per la donazione del sangue in Italia e all'estero. Il report servirà agli altri agenti del team (Marketing, UX, SEO, Copywriter) come base per le loro analisi.
+**KPI Principale:** 3x prime donazioni mensili entro 3 mesi (da 8-10 a 20-30/mese)
 
-STRUTTURA DEL REPORT
-1. Benchmark siti AVIS italiani
-Analizza almeno 5 siti di sezioni AVIS provinciali/regionali italiane (es. AVIS Nazionale, AVIS Milano, AVIS Bologna, AVIS Roma, AVIS Torino). Per ciascuno rileva: struttura della home, chiarezza del percorso di conversione (visitatore → donatore), qualità dei contenuti educativi, presenza di blog/notizie aggiornate, integrazione di strumenti digitali (prenotazione online, calendario eventi, chat), velocità e mobile-friendliness, presenza sui social.
-2. Benchmark internazionale
-Analizza almeno 3 siti esteri di riferimento per la donazione del sangue (es. American Red Cross Blood, NHS Blood and Transplant UK, Australian Red Cross Lifeblood, DKMS Germania). Identifica le best practice che mancano completamente nel panorama italiano: dati in tempo reale sulle scorte, gamification, storytelling dei donatori, chatbot, rich media.
-3. Analisi dei siti no-profit ad alta conversione
-Identifica 3–5 siti no-profit italiani o europei (non necessariamente legati alla donazione) che eccellono nella conversione online (iscrizioni, donazioni, volontariato). Estrai i pattern di conversione applicabili ad avisfrosinone.it.
-4. Analisi GEO (Generative Engine Optimization)
-Fai delle ricerche su ChatGPT, Gemini e Perplexity con le seguenti query e documenta quali fonti vengono citate, in che formato, e perché sono ritenute autorevoli:
+---
 
-"dove donare il sangue a Frosinone"
-"come diventare donatore AVIS"
-"gruppi sanguigni compatibilità"
-"donazione sangue requisiti Italia"
-"AVIS Frosinone"
+## 📅 Timeline Complessiva
 
-Identifica il gap tra la presenza attuale di avisfrosinone.it nelle risposte AI e i siti che vengono effettivamente citati. Che tipo di contenuto citano le AI? (dati numerici, FAQ, guide step-by-step, fonti istituzionali?)
-5. Analisi contenuti citabili dalle AI
-Identifica 5–10 esempi di pagine web italiane (qualsiasi settore, preferibilmente sanitario o no-profit) che vengono regolarmente citate da ChatGPT, Claude o Gemini come fonti autorevoli. Analizza la loro struttura: usano headings chiari? Dati verificabili? Rispondono a domande specifiche? Hanno markup strutturato? Sono aggiornate con frequenza?
-6. Sintesi — Gap analysis
-Confronta le best practice identificate con la struttura attuale di avisfrosinone.it e produci:
+```
+26 mar (OGGI)
+  ✅ 01-research completato (Gemini)
+  ✅ 03-marketing completato (DeepSeek)
+  ✅ 04-ux completato (ChatGPT)
+  ✅ 02-seo-geo completato (Claude PM)
 
-Top 10 opportunità prioritarie (ordinate per impatto stimato)
-Top 5 quick win implementabili immediatamente
-3 innovazioni differenzianti che nessun sito AVIS italiano ha ancora adottato
+27 mar
+  → Dev inizia schema.org (non aspetta copy)
 
+28 mar
+  → Copywriter comunica bozze pagine pillar
 
-FORMATO OUTPUT
-Usa intestazioni chiare (H1/H2/H3), tabelle comparative dove utile, link diretti ai siti analizzati, screenshot descritti testualmente. Il report deve essere auto-contenuto: chi lo legge non deve conoscere il progetto per capirlo. Lunghezza target: 2.000–3.000 parole. Lingua: italiano.
-Includi alla fine una sezione "Brief per il SEO/AI Agent" con le 20 keyword più rilevanti (10 SEO locale, 10 tematiche) da approfondire nella fase successiva, estratte dall'analisi benchmark.
+29 mar EOD
+  → 05-copy CONSEGNATO
+
+30 mar
+  → Dev finisce implementazione
+
+01 apr EOD
+  → 06-dev CONSEGNATO
+
+02-05 apr
+  → QC testing + refinement
+
+10 apr
+  🚀 LAUNCH beta avisfrosinone.it
+```
+
+---
+
+## 🤖 Team Agenti
+
+| Agente | Ruolo | Specialità | Deliverable |
+|--------|-------|-----------|------------|
+| **Researcher (Gemini)** | Analisi | Benchmark, competitor, ricerca | BENCHMARK_REPORT |
+| **SEO/AI (Claude PM)** | Stratega SEO | Keyword, schema.org, AI positioning | SEO_GEO_STRATEGY |
+| **Marketing (DeepSeek)** | Conversion | Funnel, CTA, positioning, KPI | CONVERSION_STRATEGY |
+| **UX (ChatGPT)** | Design architettura | Sitemap, wireframe, componenti | UX_ARCHITECTURE |
+| **Copywriter (Claude)** | Copy | Testi, FAQ, meta tags | COPY_ALL_PAGES |
+| **Coding (Jules)** | Sviluppo | HTML, CSS, JS, schema.org, GA4 | DEV_BRIEF + codice |
+| **QC (Team)** | Validazione | Testing, browser compatibility, SEO audit | TEST_REPORT |
+
+---
+
+## 📖 Come Leggere Questo Repository
+
+### Per il Project Manager
+1. Leggi **BRIEF.md** (una sola volta)
+2. Consulta **STATUS.md** ogni giorno
+3. Review nuovi commit per tracciare progresso
+
+### Per gli Agenti
+1. Leggi **BRIEF.md** (contesto completo)
+2. Accedi alla tua sezione (01-research, 05-copy, 06-dev, ecc.)
+3. Usa **SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md** come input (se sei 05-copy o 06-dev)
+4. **Crea i tuoi file direttamente nella cartella tua** (pull → edit → commit → push)
+
+### Per gli Stakeholder AVIS
+1. Leggi **BRIEF.md** (overview)
+2. Consulta **STATUS.md** settimanale
+3. Review **CONVERSION_STRATEGY_2026-03.md** per capire il funnel
+
+---
+
+## 🔄 Workflow Agenti — Come Contribuire
+
+### Step 1: Setup Locale
+```bash
+git clone https://github.com/MarkBlackBlue/avis-frosinone-restyling.git
+cd avis-frosinone-restyling
+git checkout -b 05-copy-26mar  # Se sei Copywriter, es.
+```
+
+### Step 2: Leggi Input
+- **Copywriter:** Leggi `/04-ux/UX_ARCHITECTURE_2026-03.md` (struttura pagine) + `/02-seo-geo/SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md` (Sezione 4-5-6 per FAQ e meta tags) + `/03-marketing/CONVERSION_STRATEGY_2026-03.md` (tone e messaging)
+- **Coding:** Leggi `/04-ux/UX_ARCHITECTURE_2026-03.md` (componenti + wireframe) + `/02-seo-geo/SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md` (Sezione 3 per schema.org)
+
+### Step 3: Crea Deliverable
+Crea file nella **tua cartella**:
+- Copywriter: `/05-copy/COPY_ALL_PAGES_2026-03.md`
+- Coding: `/06-dev/DEV_BRIEF_2026-03.md`
+
+### Step 4: Commit e Push
+```bash
+git add 05-copy/COPY_ALL_PAGES_2026-03.md
+git commit -m "05-copy: COPY_ALL_PAGES (home, prima-donazione, faq, 5 blog articles) — 29 mar 2026"
+git push origin 05-copy-26mar
+```
+
+### Step 5: Aggiorna STATUS.md
+Comunica il completamento nel file `/STATUS.md`:
+```markdown
+| 05-copy | Copywriter (Claude) | COPY_ALL_PAGES_2026-03.md | ✅ COMPLETATO | 29 mar | Testi tutte pagine, 55 FAQ, meta tags |
+```
+
+---
+
+## 📝 Commit Convention
+
+Ogni commit deve seguire questo pattern:
+
+```
+[FASE]-[AGENTE]: [File(s)] ([Descrizione]) — [Data]
+
+Esempi:
+✅ 01-research: BENCHMARK_REPORT_2026-03.md (Analisi benchmark AVIS Italia + international) — 25 mar 2026
+✅ 03-marketing: CONVERSION_STRATEGY_2026-03.md (Funnel 4 stadi, CTA primaria WhatsApp, KPI) — 26 mar 2026
+✅ 04-ux: UX_ARCHITECTURE_2026-03.md (Sitemap, slider 8 slide, pagina prima donazione, 5 componenti) — 25 mar 2026
+✅ 02-seo-geo: SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md (20 keyword, content gap, 55 FAQ, 6 schema, AI-specific opt) — 26 mar 2026
+⏳ 05-copy: COPY_ALL_PAGES_2026-03.md (Testi home, dona, prima-donazione, diventa-donatore, posso-donare, faq, blog) — 29 mar 2026
+⏳ 06-dev: DEV_BRIEF_2026-03.md (Schema.org templates, GA4 setup, componenti custom, automation) — 01 apr 2026
+```
+
+---
+
+## 🎓 Documenti Essenziali
+
+### 1. BRIEF.md (Master)
+**Leggi PRIMA di qualsiasi cosa.** Contiene:
+- Contesto AVIS Frosinone
+- Problemi attuali del sito
+- Target audience (Gen Z 18-35)
+- Vincoli tecnici (Joomla 6 + Helix Ultimate)
+- Definition of Done
+
+### 2. SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md
+**Input critico per Copywriter e Coding.** Contiene:
+- Sezione 1: 20 keyword ricercate (per Copywriter)
+- Sezione 3: Schema.org templates (per Coding)
+- Sezione 4: 55 FAQ outline (per Copywriter)
+- Sezione 5: 20 meta title/description (per Copywriter)
+- Sezione 6: AI-specific optimization (per Copywriter tone)
+- Sezione 10: KPI tracking (per Project Manager)
+
+### 3. UX_ARCHITECTURE_2026-03.md
+**Input per Copywriter (struttura pagine) e Coding (wireframe).** Contiene:
+- Sitemap completa
+- Wireframe home slider (8 slide)
+- Wireframe pagina "Prima Donazione"
+- Specifiche componenti UI (whatsapp_sticky, blood_stock_bar, eligibility_quiz, ecc.)
+
+### 4. CONVERSION_STRATEGY_2026-03.md
+**Input per Copywriter (tone, messaging, funnel).** Contiene:
+- UVP positioning
+- 4 stadi funnel (Awareness, Consideration, Intent, Action)
+- CTA strategy
+- Gestione obiezioni (10 principali)
+
+---
+
+## ✅ Checklist Agenti — Cosa Fare Dopo
+
+### 📋 Copywriter (Claude) — Scadenza 29 mar EOD
+
+**Input:**
+- CONVERSION_STRATEGY_2026-03.md (tone, messaging, obiezioni)
+- UX_ARCHITECTURE_2026-03.md (struttura pagine)
+- SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md (Sezione 4, 5, 6)
+
+**Output — Crea `/05-copy/COPY_ALL_PAGES_2026-03.md` con:**
+```
+1. Pagine Pillar (4)
+   ├─ /dona (hub informativo)
+   ├─ /prima-donazione (landing Gen Z)
+   ├─ /diventa-donatore (funnel step-by-step)
+   └─ /posso-donare (idoneità quiz + requisiti)
+
+2. FAQ Complete (55)
+   ├─ 15 Prima Donazione
+   ├─ 15 Requisiti e Idoneità
+   ├─ 10 Sicurezza
+   ├─ 10 Aspetti Pratici
+   └─ 5 Post-Donazione
+
+3. Blog Articles (5)
+   ├─ Paura aghi — come superarla
+   ├─ Donare fa male? — scienza dice no
+   ├─ Tatuaggi — quando puoi donare
+   ├─ Dieta pre-donazione — cosa mangiare
+   └─ Requisiti 2026 — check veloce
+
+4. Meta Tags (20)
+   ├─ 20 Meta Title (55-60 char)
+   └─ 20 Meta Description (155 char)
+
+5. CTA Copy Precompilati
+   ├─ WhatsApp primary
+   ├─ WhatsApp secondary (urgenza)
+   └─ Telefono fallback
+
+6. Hero Sections + Section Headers
+```
+
+**Commit message:**
+```
+05-copy: COPY_ALL_PAGES_2026-03.md (Home, pagine pillar, 55 FAQ, 5 blog, meta tags, CTA) — 29 mar 2026
+```
+
+---
+
+### 🔧 Coding (Jules) — Scadenza 01 apr EOD
+
+**Input:**
+- UX_ARCHITECTURE_2026-03.md (wireframe, componenti, mobile spec)
+- SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md (Sezione 3 schema.org)
+- COPY_ALL_PAGES_2026-03.md (una volta consegnato dal Copywriter)
+
+**Output — Crea `/06-dev/DEV_BRIEF_2026-03.md` con:**
+```
+1. Schema.org Implementation
+   ├─ MedicalWebPage (tutte pagine info)
+   ├─ LocalBusiness (home, contatti, urgenza-sangue)
+   ├─ FAQPage (/faq con 55 FAQ)
+   ├─ BreadcrumbList (pagine depth > 1)
+   ├─ NewsArticle (/news, /blog)
+   └─ Person (profili medici /chi-siamo)
+
+2. GA4 Event Tracking
+   ├─ Click pulsante WhatsApp
+   ├─ Click pulsante Telefono
+   ├─ Scroll profondità pagina
+   └─ Click CTA secondaria
+
+3. Componenti Custom CSS/JS
+   ├─ whatsapp_sticky (mobile)
+   ├─ blood_stock_bar (urgenza dinamica)
+   ├─ impact_counter (donazioni animate)
+   ├─ eligibility_quiz (5 domande)
+   └─ donor_testimonial (card donatore)
+
+4. Automation
+   ├─ dateModified automatico (settimanale)
+   ├─ Contatore donazioni (widget dinamico)
+   └─ Banner urgenza sangue (aggiornabile backoffice)
+
+5. Mobile Optimization
+   ├─ Breakpoint 320/768/1024
+   ├─ Slider mobile behavior
+   ├─ Sticky CTA mobile
+   └─ Performance (lazy-load, defer JS)
+
+6. HTML Templates
+   ├─ home.html (nuovo slider 8 slide)
+   ├─ prima-donazione.html
+   ├─ posso-donare.html
+   └─ faq.html (accordion)
+```
+
+**+ Subdirectory `/06-dev/HTML_TEMPLATES/`, `/06-dev/CSS_COMPONENTS.css`, `/06-dev/JS_INTERACTIONS.js`**
+
+**Commit message:**
+```
+06-dev: DEV_BRIEF_2026-03.md + templates (Schema.org, GA4, componenti custom, mobile) — 01 apr 2026
+```
+
+---
+
+## 🧪 QC Team — Scadenza 05 apr
+
+**Input:**
+- COPY_ALL_PAGES_2026-03.md (da Copywriter)
+- DEV_BRIEF_2026-03.md (da Coding)
+
+**Output — Crea `/TEST_REPORT_2026-04.md` con:**
+```
+1. Functional Testing
+   ├─ Navigazione (home → dona → prima-donazione → contatti)
+   ├─ CTA WhatsApp (funzione precompilato)
+   ├─ FAQ accordion (open/close)
+   └─ Mobile responsive (iOS Safari + Android Chrome)
+
+2. SEO Audit
+   ├─ 20 keyword positions Google
+   ├─ Schema.org validation (Google Rich Results)
+   ├─ Meta tags compliance
+   └─ Core Web Vitals (LCP, CLS, FID)
+
+3. Copy Review
+   ├─ Grammatica italiana
+   ├─ Tone consistency Gen Z
+   ├─ CTA clarity
+   └─ No broken links
+
+4. AI Citation Test
+   ├─ ChatGPT: avisfrosinone.it citato per "donare sangue frosinone"?
+   ├─ Gemini: schema LocalBusiness riconosciuto?
+   ├─ Perplexity: dateModified fresh?
+   └─ Claude: contenuto approfondito citato?
+
+5. Browser Compatibility
+   ├─ Chrome 120+
+   ├─ Firefox 120+
+   ├─ Safari 17+
+   └─ Edge 120+
+
+6. Accessibility
+   ├─ WCAG 2.1 AA
+   ├─ Screen reader (NVDA)
+   ├─ Keyboard navigation
+   └─ Color contrast
+```
+
+---
+
+## 🚀 Dopo il Launch
+
+**10 apr: Beta Live**
+- Monitoraggio KPI settimanale
+- GA4 tracking verificato
+- WhatsApp Business setup
+- Newsletter setup per retention
+
+**30 apr: Post-Launch Review**
+- Analisi dati prime 3 settimane
+- Ajustate di contenuto/UX in base a metriche
+- Plan per Sezione "Continui a donare" (retention)
+
+---
+
+## 📞 Contatti Emergenza
+
+| Ruolo | Nome/Contatto | Reperibilità |
+|-------|---------------|------------|
+| Project Manager | Claude PM | Sempre in chat |
+| AVIS Ref. | [Nome] | Ufficio AVIS |
+| Tech Lead | [Nome] | Slack |
+
+---
+
+## 📜 Changelog
+
+### 26 mar 2026, 18:00
+✅ Repository structure creato  
+✅ README.md setup  
+✅ BRIEF.md approvato (in coda)  
+✅ 4 deliverable completati (research, marketing, ux, seo)  
+⏳ Copywriter bloccato fino a merge status.md
+
+### [Aggiungi qui i nuovi aggiornamenti]
+
+---
+
+## 📄 Licenza & Note
+
+Repository privato AVIS Frosinone. Accesso limitato al team progetto.
+
+**Ultimo aggiornamento:** 26 marzo 2026  
+**Prossimo check:** 27 marzo 09:00 CET (dev inzia schema.org)
