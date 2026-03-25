@@ -1,35 +1,56 @@
-Risposte al questionario preliminare:
-Materia trattata:
-UX Research e Digital Strategy applicata al Terzo Settore (associazioni donatori sangue), con focus specifico su Conversion Rate Optimization (CRO) per target Gen Z in ambito healthcare preventivo.
-Livello di profondità:
-Documentazione tecnica semi-formale per team di sviluppo e Project Manager AI.
-Non serve per stakeholder AVIS (troppo tecnico), ma deve giustificare le scelte metodologiche ai 6 agenti AI successivi. Struttura: markdown tecnico con sezioni standardizzate (Scope, Metodologia, Fonti, Limiti).
-Integrazione AI - Ruoli specifici:
-Table
-Agente	Ruolo nella ricerca
-Gemini (Researcher)	Desk research competitor + analisi benchmark internazionale
-Claude PM (SEO/AI)	Keyword research + ottimizzazione per AI generative (GEO)
-DeepSeek (Marketing)	Analisi funnel conversione + pain point donatori
-ChatGPT (UX)	Architettura informazione + wireframe logici
-Claude (Copy)	Sintesi insight ricerca in copy Gen Z (non fa ricerca primaria)
-Jules (Dev)	Valutazione fattibilità tecnica delle soluzioni UX proposte
-Target Primario vs Vincolo Accessibilità:
-🎯 Target primario assoluto: Gen Z (18-35 anni) — "Prima Donazione".
-✅ Vincolo accessibilità: Sì, ma secondario. Il sito deve rispettare WCAG 2.1 AA (quindi usabile anche da Boomer/Gen X che cercano info per figli/nipoti), ma la strategia UX, tono di voce e componenti (es. sticky WhatsApp, quiz interattivi) sono ottimizzati per nativi digitali. Non serve versione "senior mode" separata.
-Dati Analytics:
-❌ Conferma assenza totale dati storici quantitativi.
-❌ Nessun report qualitativo strutturato dalla sede (solo feedback aneddotici verbali: "i giovani chiedono sempre se fa male", "non sanno gli orari").
-Approccio: Research generativo basato su best practices settore, non su dati legacy.
-Benchmarking - Modelli di riferimento:
-Settore sangue: Red Cross Blood (USA), NHS Blood Donation (UK), GiveBlood (Australia) — per UX mobile-first e gestione paura.
-Altri settori:
-Fintech/App: Revolut/N26 per onboarding fluido e zero-friction
-Healthtech: Babylon Health, KRY per tone of voice rassicurante
-No-profit: Charity: Water per storytelling impatto (counter donatori)
-KPI di Ricerca da validare:
-Non è un research di validazione (non abbiamo baseline), ma generativo/esplorativo.
-Tuttavia, il successo della ricerca si misurerà in output concreti:
-3 funnel di conversione distinti mappati (Awareness → Consideration → Intent → Action)
-55 FAQ coprenti 100% delle obiezioni emerse dal benchmark
-Zero bounce sulle pagine pillar (obiettivo progettuale: tutte le info entro 2 click dalla home)
-Nota per Gemini: Procedi con metodologia Desk Research + Competitive Analysis (no user interview, no survey). Il documento deve giustificare perché abbiamo scelto WhatsApp come CTA primaria (vs form web) e perché il tono è ultra-conversazionale (vs istituzionale).
+RESEARCH_METHODOLOGY.md
+Progetto: AVIS Frosinone Restyling 2026
+Document Type: UX Research Strategy & Methodological Framework
+Version: 1.0 (Generative Phase)
+Lead Agent: Gemini (UX Researcher)
+1. SCOPE DELLA RICERCA
+L'attività di ricerca mira a definire il nuovo standard digitale per la sezione provinciale di Frosinone, trasformando il sito da archivio istituzionale a motore di conversione per la prima donazione (Gen Z).
+Obiettivi della fase Research
+•	Identificazione Obiezioni: Mappare i "friction point" psicologici e informativi che allontanano il target 18-35 dalla donazione.
+•	Mapping del Funnel: Definire i flussi logici che portano l'utente dall'awareness (social/territorio) all'azione (contatto WhatsApp).
+•	Validazione Modelli Internazionali: Estrarre pattern di successo da organizzazioni leader (Red Cross, NHS) per adattarli al contesto locale.
+Domande di Ricerca
+1.	Quali sono i pattern UI/UX che riducono l'ansia da "prima volta" nei donatori digital-native?
+2.	Come deve evolvere l'architettura dell'informazione per garantire il reperimento di orari e requisiti entro 2 click?
+3.	Perché il sistema di messaggistica istantanea (WhatsApp) è preferibile ai form web standard per il tasso di conversione Gen Z?
+Ambito
+•	Geografico: Focus locale (Provincia di Frosinone) con benchmarking nazionale e internazionale.
+•	Demografico: Primario Gen Z (18-35 anni); Secondario (Accessibilità WCAG 2.1 AA per Boomer/Gen X).
+________________________________________
+2. METODOLOGIA ADOTTATA
+Data l'assenza di dati analytics pregressi, la ricerca adotta un approccio Generativo e Comparativo, basato su evidenze di settore.
+Desk Research (Fonti Secondarie)
+Analisi qualitativa di report sull'andamento delle donazioni in Italia (Centro Nazionale Sangue) e letteratura psicologica sulla "needle phobia" e sull'altruismo digitale. L'analisi è finalizzata a generare le 55 FAQ per l'agente Copy.
+Competitive Analysis
+Selezione dei competitor basata su criteri di Digital Maturity e Conversion Design:
+•	Settore Sangue: Red Cross Blood (USA), NHS Blood (UK). Criteri: Onboarding flow, gestione obiezioni.
+•	Settore Fintech/Health: Revolut, Babylon Health. Criteri: Velocità dei processi, micro-copy rassicurante.
+•	Settore No-Profit: Charity: Water. Criteri: Storytelling dell'impatto sociale.
+Heuristic Evaluation
+Valutazione dei modelli di riferimento basata sulle 10 euristiche di Nielsen, con focus specifico su:
+•	Match between system and the real world: Linguaggio naturale vs burocratese medico.
+•	Consistency and standards: Allineamento alle linee guida AVIS Nazionali 2025/26.
+________________________________________
+3. FONTI E DATI
+Fonte	Tipologia	Focus dell'analisi
+AVIS Nazionale	Brand Guidelines	Coerenza visuale e valori istituzionali.
+Red Cross Blood (USA)	Benchmark Settore	Gamification e flussi di prenotazione.
+NHS Blood (UK)	Benchmark Settore	Trasparenza sui requisiti medici (Idoneità).
+Revolut / N26	Cross-Industry	UI "Zero-friction" e Onboarding rapido.
+Charity: Water	Storytelling	Visualizzazione dell'impatto della donazione.
+________________________________________
+4. LIMITI E ASSUNZIONI
+Vincoli e Assunzioni
+•	Assenza di Baseline: In mancanza di dati storici (Google Analytics legacy), la strategia assume come "punto zero" le best practices internazionali di conversione.
+•	Target Gen Z: Si assume che il target preferisca l'interazione asincrona e informale (WhatsApp) rispetto alla compilazione di form statici o chiamate telefoniche.
+•	Bias Geografico: Si assume che i pain point dei giovani a Frosinone siano sovrapponibili a quelli nazionali (mancanza di tempo, paura dell'ago, incertezza sull'idoneità).
+Vincoli Tecnici
+•	Accessibilità: Il design deve essere inclusivo (WCAG 2.1 AA) senza compromettere l'estetica moderna richiesta dal target primario.
+•	Mobile-First: La ricerca assume che oltre l'85% del traffico proverrà da dispositivi mobile (da campagne social).
+________________________________________
+5. OUTPUT DELLA RICERCA (INTER-AGENT WORKFLOW)
+I risultati della ricerca fungono da input per i successivi agenti AI:
+•	Per Claude PM (SEO): Elenco di intenti di ricerca basati sulle paure dei donatori (es. "donare sangue fa male", "cosa mangiare prima di donare").
+•	Per ChatGPT (UX): Definizione dei 3 funnel principali e posizionamento della CTA WhatsApp come elemento persistente (Sticky).
+•	Per Claude (Copy): Definizione del tono di voce (rassicurante, diretto, non istituzionale) e redazione delle 55 FAQ.
+•	Per Jules (Dev): Definizione dei requisiti di performance per garantire il caricamento istantaneo delle pagine pillar.
