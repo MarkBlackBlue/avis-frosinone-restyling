@@ -7,10 +7,10 @@
 
 ## 1. CHI È IL CLIENTE
 
-**AVIS Comunale di Frosinone** è la sezione comunale dell'Associazione Volontari Italiani del Sangue, attiva nel territorio di Frosinone e provincia.
+**AVIS Comunale di Frosinone** è la sezione comunale dell'Associazione Volontari Italiani del Sangue, attiva nel territorio del comune di Frosinone.
 
 - **Missione:** promuovere la cultura della donazione volontaria, gratuita e anonima del sangue e del plasma
-- **Attività principali:** organizzazione raccolte sangue, banchetti informativi, attività nelle scuole, formazione volontari
+- **Attività principali:** AVIS Comunale di Frosinone, è impegnata nel diffondere la cultura del dono sul territorio, ed accompagnare ogni donatore in un gesto semplice, sicuro, gratuito.
 - **Contatto operativo:** WhatsApp/Tel. +39 377 490 1081
 - **Codice Fiscale:** 92001460606 (usato anche per il 5×1000)
 - **Partner istituzionali:** Seeweb (hosting/tech), Duferco Energia
