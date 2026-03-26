@@ -1,0 +1,95 @@
+<!-- AVIS Frosinone - Prima Donazione Template -->
+<section class="hero-section" data-theme="red">
+    <div class="container">
+        <h1 class="hero-title">La tua prima volta è speciale.</h1>
+        <p class="hero-subtitle">Niente paura degli aghi. Solo rassicurazione e supporto.</p>
+        <div class="cta-group">
+            <a href="https://wa.me/393774901081?text=Ciao, vorrei prenotare la mia prima donazione!" class="btn-whatsapp" data-location="hero">Prenota su WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<section class="steps-section">
+    <div class="container">
+        <h2>Cosa succede in 45 minuti</h2>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <h3>Accoglienza</h3>
+                <p>Meno di 5 minuti per registrarti.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <h3>Visita Medica</h3>
+                <p>Check gratuito di pressione e emoglobina.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <h3>Donazione</h3>
+                <p>8-10 minuti, seduto in poltrona.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <h3>Colazione</h3>
+                <p>Succo e biscotti offerti da noi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Componente eligibility_quiz incluso se necessario -->
+<section class="quiz-section">
+    <div class="container">
+        <h2>Sei idoneo? Scoprilo in 30 secondi.</h2>
+        <div id="eligibility-quiz" class="quiz-container">
+            <div class="quiz-steps-container">
+                <!-- Step 1: Età -->
+                <div class="quiz-step active" data-step="1">
+                    <h3 class="quiz-question">Hai tra 18 e 65 anni?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn btn-next" data-next="2" data-value="yes">Sì</button>
+                        <button class="quiz-btn btn-next" data-next="2" data-value="no">No</button>
+                    </div>
+                </div>
+                <!-- Step 2: Peso -->
+                <div class="quiz-step" data-step="2">
+                    <h3 class="quiz-question">Pesi almeno 50 kg?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn btn-next" data-next="3" data-value="yes">Sì</button>
+                        <button class="quiz-btn btn-next" data-next="3" data-value="no">No</button>
+                    </div>
+                </div>
+                <!-- Step 3: Salute -->
+                <div class="quiz-step" data-step="3">
+                    <h3 class="quiz-question">Ti senti bene oggi?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn btn-next" data-next="4" data-value="yes">Sì</button>
+                        <button class="quiz-btn btn-next" data-next="4" data-value="no">No</button>
+                    </div>
+                </div>
+                <!-- Step 4: Antibiotici -->
+                <div class="quiz-step" data-step="4">
+                    <h3 class="quiz-question">Hai preso antibiotici negli ultimi 30 giorni?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn btn-next" data-next="5" data-value="no">No</button>
+                        <button class="quiz-btn btn-next" data-next="5" data-value="yes">Sì</button>
+                    </div>
+                </div>
+                <!-- Step 5: Tatuaggi -->
+                <div class="quiz-step" data-step="5">
+                    <h3 class="quiz-question">Hai fatto tatuaggi negli ultimi 4 mesi?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn btn-next" data-next="result" data-value="no">No</button>
+                        <button class="quiz-btn btn-next" data-next="result" data-value="yes">Sì</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-result" style="display: none;">
+                <h3 class="status-text">Analizzando i tuoi dati...</h3>
+                <p>Verifichiamo insieme la tua idoneità su WhatsApp.</p>
+                <a href="#" class="btn-whatsapp wa-link" data-location="quiz">Parla con AVIS Frosinone</a>
+            </div>
+        </div>
+    </div>
+</section>
