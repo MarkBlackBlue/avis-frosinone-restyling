@@ -1,0 +1,1193 @@
+
+/* ================================================
+   AVIS COMUNALE DI FROSINONE — custom.css
+   Versione: 2.1
+   Ambito: Home page full-page slider
+
+   INDICE
+   1.  Variabili locali
+   2.  Joomla chrome — nascondere sulla home
+   3.  Body & HTML — override specifici home
+   4.  Componenti fissi (progress bar, counter, nav dots)
+   5.  Layout slide
+   6.  Sfondi colonna sinistra (data-bg)
+   7.  Temi slide (data-theme)
+   8.  Sistema transizioni
+   9.  Tipografia colonna sinistra
+   10. Tipografia colonna destra
+   11. Componente — Requisiti donazione
+   12. Componente — Gruppi sanguigni
+   13. Componente — Steps
+   14. Componente — FAQ e Tipi donazione
+   15. Componente — Blog preview
+   16. Componente — Codice fiscale 5x1000
+   17. Componente — Partner
+   18. Componente — CTA / Pulsanti
+   19. Media query — Tablet (max 1024px)
+   20. Media query — Mobile (max 768px)
+   21. Media query — Small phone (max 480px)
+   22. Accessibilità
+   ================================================ */
+
+
+/* ================================================
+   1. VARIABILI LOCALI
+   Le variabili brand (colori, font) sono nel
+   template Helix Ultimate.
+   Qui vivono solo le variabili specifiche
+   di questa pagina.
+   ================================================ */
+:root {
+    /* Timing transizioni */
+    --tr-enter:      0.85s;
+    --tr-exit:       0.45s;
+    --tr-ease-in:    cubic-bezier(0.4, 0.0, 1.0, 1.0);
+    --tr-ease-out:   cubic-bezier(0.0, 0.0, 0.2, 1.0);
+    --tr-ease-inout: cubic-bezier(0.4, 0.0, 0.2, 1.0);
+
+    /* Offset animazione colonna destra */
+    --slide-offset-x: 80px;
+    --slide-offset-y: 60px; /* varianti future */
+
+    /* Layout colonne */
+    --col-left-width: 40%;
+
+    /* Colore testo in evidenza */
+    --evidence-color: #0058ff;
+}
+
+
+/* ================================================
+   2. JOOMLA CHROME — nascondere sulla home
+   La classe .home sul <body> è aggiunta
+   automaticamente da Joomla sulla home page.
+   ================================================ */
+body.itemid-101 #sp-top-bar,
+body.itemid-101 #sp-header,
+body.itemid-101 #sp-footer,
+body.itemid-101 .article-details .article-header,
+body.itemid-101 .article-details .article-info,
+body.itemid-101 .pagenavigation {
+    display: none !important;
+}
+
+body.itemid-101 {
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+    overscroll-behavior: none;
+    background: var(--avis-red);
+}
+/* ================================================
+   3. BODY & HTML — override specifici home
+   ================================================ */
+.home body {
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh; /* gestisce la barra indirizzi mobile */
+    overscroll-behavior: none; /* blocca il bounce Safari */
+    background: var(--avis-red);
+}
+
+.paa {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: black;
+  margin-top: 1rem;
+}
+.paa::before {
+  content: 'Q - ';
+  color: red;
+  font-weight: 700;
+}
+/* ================================================
+   4. COMPONENTI FISSI
+   ================================================ */
+
+/* --- Barra di avanzamento --- */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: var(--avis-blue);
+    z-index: 1000;
+    transition: width 0.4s var(--tr-ease-out);
+}
+
+/* --- Contatore slide --- */
+#slide-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 50px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    z-index: 1000;
+    user-select: none;
+}
+
+/* --- Nav dots --- */
+#nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.nav-dot {
+    position: relative; /* necessario per il tooltip */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(102, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--white);
+}
+
+.nav-dot.active {
+    background: var(--avis-red);
+    border-color: var(--white);
+    transform: scale(1.35);
+}
+
+/* --- Tooltip testo (a sinistra del pallino) --- */
+.nav-dot::before {
+    z-index: 10000;
+    content: attr(data-label);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(20, 0, 255);
+	color: white;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* --- Freccia del tooltip --- */
+.nav-dot::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: rgba(30, 30, 30, 0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* --- Visibile all'hover --- */
+.nav-dot:hover::before,
+.nav-dot:hover::after {
+    opacity: 1;
+}
+
+   /* ── FAQ accordion ── */
+    .faq {
+      margin-top: 1.25rem;
+      display: grid; gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .faq-item { background: var(--white); }
+    .faq-btn {
+      width: 100%; display: flex;
+      justify-content: space-between;
+      align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: none; border: none;
+      cursor: pointer;
+      font-family: var(--f-body);
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--ink); text-align: left;
+      line-height: 1.4;
+    }
+    .faq-btn:hover { color: var(--red); }
+    .faq-btn:focus-visible { outline: 2px solid var(--red); outline-offset:-2px; }
+    .faq-ico {
+      flex-shrink: 0; width: 20px; height: 20px;
+      border-radius: 50%; border: 1.5px solid var(--red);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red); font-size: 1rem;
+      transition: transform .3s var(--ease), background .2s;
+    }
+    .faq-btn[aria-expanded="true"] .faq-ico {
+      background: var(--red); color: #fff;
+      transform: rotate(45deg);
+    }
+    .faq-ans {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s var(--ease), padding .3s;
+      font-size: 1rem; color: var(--ink-60);
+      line-height: 1.75;
+      padding: 0 1.25rem;
+    }
+    .faq-item.open .faq-ans {
+      max-height: 400px;
+      padding: 0 1.25rem 1.1rem;
+    }
+/* ================================================
+   5. LAYOUT SLIDE
+   ================================================ */
+.full-row {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.full-row.active {
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* --- Colonna sinistra --- */
+.row-left {
+    width: var(--col-left-width);
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 2.5rem 3rem 4rem;
+    background-color: var(--avis-red); /* fallback */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    gap: 0.5rem;
+}
+
+/* --- Colonna destra --- */
+.row-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    background-color: var(--white);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+	box-shadow: -10px 0 20px #999;
+}
+
+.row-logo {
+    margin-bottom: 0.5rem;
+}
+.row-logo img {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+
+.partner {
+  background:#99999930;
+  padding: 20px;
+  margin: auto;
+}
+
+/* ================================================
+   6. SFONDI COLONNA SINISTRA
+   Per cambiare immagine: modificare solo url()
+   I data-bg seguono l'ordine delle slide.
+   ================================================ */
+[data-bg="identity"] .row-left  { background-image: url('/avis/images/sfondi/sfondo_uno.png'); }
+[data-bg="donation"] .row-left  { background-image: url('/avis/images/sfondi/sfondo_due.png'); }
+[data-bg="calendar"] .row-left  { background-image: url('/avis/images/sfondi/sfondo_tre.png'); }
+[data-bg="join"]     .row-left  { background-image: url('/avis/images/sfondi/sfondo_quattro.png'); }
+[data-bg="gold"]    .row-left  { background-image: url('/avis/images/sfondi/sfondo_cinque.png'); }
+[data-bg="faq"]      .row-left  { background-image: url('/avis/images/sfondi/sfondo_sei.png'); }
+[data-bg="tax"]      .row-left  { background-image: url('/avis/images/sfondi/sfondo_sette.png'); }
+[data-bg="volunteer"].row-left  { background-image: url('/avis/images/sfondi/sfondo_otto.png'); }
+[data-bg="news"]     .row-left  { background-image: url('/avis/images/sfondi/sfondo_nove.png'); }
+[data-bg="partners"] .row-left  { background-image: url('/avis/images/sfondi/sfondo_dieci.png'); }
+
+
+/* ================================================
+   7. TEMI SLIDE
+   ================================================ */
+
+/* Light — bianco istituzionale */
+[data-theme="light"] .row-left { background-color: #f5f5f5; }
+[data-theme="light"] .row-label,
+[data-theme="light"] .row-title,
+[data-theme="light"] .row-subtitle { color: var(--text-dark); }
+[data-theme="light"] .row-divider  { background: var(--avis-red); }
+
+/* Red — rosso AVIS */
+[data-theme="red"] .row-left { background-color: var(--avis-red); }
+[data-theme="red"] .row-label,
+[data-theme="red"] .row-title,
+[data-theme="red"] .row-subtitle { color: var(--white); }
+[data-theme="red"] .row-divider  { background: rgba(255, 255, 255, 0.6); }
+
+/* Blue — calendario */
+[data-theme="blue"] .row-left { background-color: var(--avis-blue); }
+[data-theme="blue"] .row-label,
+[data-theme="blue"] .row-title,
+[data-theme="blue"] .row-subtitle { color: var(--white); }
+[data-theme="blue"] .row-divider  { background: rgba(255, 255, 255, 0.6); }
+
+/* Gold — 5x1000 */
+[data-theme="gold"] .row-left { background-color: #e6c619; }
+[data-theme="gold"] .row-label,
+[data-theme="gold"] .row-title,
+[data-theme="gold"] .row-subtitle { color: #594e0f;; }
+[data-theme="gold"] .row-divider  { background: #ffd54f; }
+
+/* Orange — volontariato */
+[data-theme="orange"] .row-left { background-color: #d45500; }
+[data-theme="orange"] .row-label,
+[data-theme="orange"] .row-title,
+[data-theme="orange"] .row-subtitle { color: var(--white); }
+[data-theme="orange"] .row-divider  { background: rgba(255, 255, 255, 0.6); }
+
+/* Light Grey — FAQ */
+/* CORRETTO: era ##cbcbcb (doppio #) */
+[data-theme="light-grey"] .row-left { background-color: #cbcbcb; }
+[data-theme="light-grey"] .row-label,
+[data-theme="light-grey"] .row-title,
+[data-theme="light-grey"] .row-subtitle { color: var(--text-dark); }
+[data-theme="light-grey"] .row-divider  { background: var(--avis-red); }
+[data-theme="light-grey"] .row-right    { background-color: #f9f9f9; }
+
+/* Bordeaux — gruppi sanguigni */
+[data-theme="bordeaux"] .row-left { background-color: #6b0020; }
+[data-theme="bordeaux"] .row-label,
+[data-theme="bordeaux"] .row-title,
+[data-theme="bordeaux"] .row-subtitle { color: var(--white); }
+[data-theme="bordeaux"] .row-divider  { background: rgba(255, 255, 255, 0.5); }
+
+/* Paper — news/blog */
+[data-theme="paper"] .row-left { background-color: #f0ebe3; }
+[data-theme="paper"] .row-label,
+[data-theme="paper"] .row-title,
+[data-theme="paper"] .row-subtitle { color: #2c1f0e; }
+[data-theme="paper"] .row-divider  { background: var(--avis-red); }
+[data-theme="paper"] .row-right    { background-color: #faf7f2; }
+
+/* Info — verde chiaro informativo */
+/* CORRETTO: era ##c8ffc8 (doppio #) e doppio punto e virgola */
+[data-theme="info"] .row-left { background-color: #c8ffc8; }
+[data-theme="info"] .row-label,
+[data-theme="info"] .row-title,
+[data-theme="info"] .row-subtitle { color: #2c1f0e; }
+[data-theme="info"] .row-divider  { background: var(--avis-red); }
+[data-theme="info"] .row-right    { background-color: #faf7f2; }
+
+/* Dark — convenzioni */
+[data-theme="dark"] .row-left { background-color: #bc0038; }
+[data-theme="dark"] .row-label,
+[data-theme="dark"] .row-title,
+[data-theme="dark"] .row-subtitle { color: var(--white); }
+[data-theme="dark"] .row-divider  { background: rgba(255, 255, 255, 0.4); }
+[data-theme="dark"] .row-right    { background-color: #16213e; }
+[data-theme="dark"] .right-eyebrow { color: rgba(255, 255, 255, 0.5); }
+[data-theme="dark"] .right-heading { color: var(--white); }
+[data-theme="dark"] .right-text    { color: rgba(255, 255, 255, 0.8); }
+
+
+/* ================================================
+   8. SISTEMA TRANSIZIONI
+
+   Stato base → slide non visibile
+   .active    → animazione di entrata
+   .exiting   → animazione di uscita
+
+   Per varianti su singola slide aggiungere
+   data-trans-l o data-trans-r sulla <section>.
+   ================================================ */
+
+/* --- Stato base --- */
+.full-row .row-left {
+    opacity: 0;
+}
+.full-row .row-right {
+    opacity: 0;
+    transform: translateX(var(--slide-offset-x));
+}
+
+/* --- Entrata --- */
+.full-row.active .row-left {
+    opacity: 1;
+    transition: opacity var(--tr-enter) var(--tr-ease-out);
+}
+.full-row.active .row-right {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity var(--tr-enter) var(--tr-ease-out),
+                transform var(--tr-enter) var(--tr-ease-out);
+}
+
+/* --- Uscita --- */
+.full-row.exiting .row-left {
+    opacity: 0;
+    transition: opacity var(--tr-exit) var(--tr-ease-in);
+}
+.full-row.exiting .row-right {
+    opacity: 0;
+    transform: translateX(var(--slide-offset-x));
+    transition: opacity var(--tr-exit) var(--tr-ease-in),
+                transform var(--tr-exit) var(--tr-ease-in);
+}
+
+/* --- Varianti — stub pronti per revisioni future ---
+   Attivare aggiungendo data-trans-r o data-trans-l
+   sulla <section>. Nessuna slide le usa ora.        */
+
+/* Destra: entra/esce dal basso */
+[data-trans-r="slide-up"] .row-right         { transform: translateY(var(--slide-offset-y)); }
+[data-trans-r="slide-up"].active .row-right  { transform: translateY(0); }
+[data-trans-r="slide-up"].exiting .row-right { transform: translateY(var(--slide-offset-y)); }
+
+/* Sinistra: zoom + fade */
+[data-trans-l="zoom"] .row-left         { transform: scale(0.96); }
+[data-trans-l="zoom"].active .row-left  { transform: scale(1);
+                                          transition: opacity var(--tr-enter) var(--tr-ease-out),
+                                                      transform var(--tr-enter) var(--tr-ease-out); }
+[data-trans-l="zoom"].exiting .row-left { transform: scale(0.96);
+                                          transition: opacity var(--tr-exit) var(--tr-ease-in),
+                                                      transform var(--tr-exit) var(--tr-ease-in); }
+
+/* Destra: fade puro senza movimento */
+[data-trans-r="fade"] .row-right         { transform: none; }
+[data-trans-r="fade"].active .row-right  { transform: none; }
+[data-trans-r="fade"].exiting .row-right { transform: none; }
+
+
+/* ================================================
+   9. TIPOGRAFIA COLONNA SINISTRA
+   ================================================ */
+.row-label {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.7em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    color: #b00000 !important;
+}
+
+.row-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.row-divider {
+    width: 44px;
+    height: 3px;
+    border-radius: 2px;
+    margin: 0.75rem 0;
+    flex-shrink: 0;
+    /* colore assegnato per ogni data-theme */
+}
+
+.row-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.85;
+    margin: 0;
+}
+
+/* Contenitore immagini/icone/emoji */
+.row-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 0.75rem;
+}
+
+.row-visual img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Emoji come icona decorativa */
+.row-visual[aria-hidden="true"] {
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+}
+
+/* Box alert */
+.alert {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--white);
+  border-left: 4px solid red;
+  padding: 1.1rem 1.25rem;
+  margin-top: 1.75rem;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+/* ================================================
+   10. TIPOGRAFIA COLONNA DESTRA
+   ================================================ */
+.right-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--avis-red);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.right-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.right-text {
+    font-family: var(--font-body);
+    font-size: 1,05rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin-bottom: 1.25rem;
+}
+
+.evidence {
+    font-weight: 700;
+    color: var(--evidence-color);
+}
+
+/* ================================================
+   11. COMPONENTE — Requisiti donazione
+   ================================================ */
+.req-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.req-item {
+    flex: 1;
+    min-width: 100px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    border-top: 3px solid var(--avis-red);
+    padding: 14px 16px;
+    text-align: center;
+    box-shadow: 0px 0px 10px #79787870;
+	border-radius: 20px;
+}
+
+.req-value {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--avis-red);
+    display: block;
+    line-height: 1.1;
+}
+
+.req-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--text-medium);
+    margin-top: 4px;
+    display: block;
+}
+
+
+/* ================================================
+   12. COMPONENTE — Gruppi sanguigni
+   ================================================ */
+.group-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 380px;
+    margin-bottom: 1.5rem;
+}
+
+.group-item {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    border-top: 3px solid var(--avis-red);
+    padding: 10px 6px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.group-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--avis-red);
+    line-height: 1;
+}
+
+.group-pct {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-medium);
+    margin-top: 3px;
+    display: block;
+}
+
+
+/* ================================================
+   13. COMPONENTE — Steps
+   ================================================ */
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--avis-red);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.step-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    padding-top: 4px;
+}
+
+.step-text strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+
+/* ================================================
+   14. COMPONENTE — FAQ e Tipi donazione
+
+   .faq-item è riusato nella Slide 02
+   per i tipi di donazione tramite .has-icon
+   che aggiunge il layout flex per l'emoji.
+   ================================================ */
+.faq-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.faq-item {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-medium);
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.03);
+    border-left: 3px solid var(--avis-red);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.faq-item strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+/* Variante con icona emoji — Slide 02 navigazione implicita */
+.faq-item.has-icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.donation-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+
+/* Variante cliccabile — .faq-item usato come <a> */
+a.faq-item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                border-left-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+a.faq-item:hover {
+    background: rgba(227, 5, 19, 0.07);
+    border-left-color: var(--avis-red-dark);
+    transform: translateX(4px); /* freccia implicita verso destra */
+}
+
+
+/* ================================================
+   15. COMPONENTE — Blog preview
+   ================================================ */
+.blog-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.blog-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-item:last-child {
+    border-bottom: none;
+}
+
+.blog-item time {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--avis-red);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.blog-item strong {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.blog-item p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+.cf-box {
+    background: linear-gradient(135deg, #fffbf0, #fff3cd);
+    border: 2px solid #ffd54f;
+    border-radius: var(--border-radius);
+    padding: 16px 24px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.cf-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-medium);
+    margin-bottom: 4px;
+}
+
+.cf-number {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #7a5000;
+    letter-spacing: 0.08em;
+}
+
+
+/* ================================================
+   17. COMPONENTE — Partner
+   ================================================ */
+.partner-logos {
+    gap: 1.25rem;
+}
+
+.partner-logos a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.partner-logos img {
+    max-width: 180px;
+}
+
+.partner-quote {
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.partner-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.partner-tag {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 7px 16px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .partner-tag {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+}
+
+
+/* ================================================
+   18. COMPONENTE — CTA / Pulsanti
+   ================================================ */
+.cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 0.5rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-discover,
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1;
+    transition: background 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease,
+                box-shadow 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--avis-red);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background: var(--avis-red-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(227, 5, 19, 0.3);
+}
+
+.btn-secondary {
+    background: cadetblue;
+    color: var(--white);
+    padding: 13px 28px;
+}
+.btn-secondary:hover {
+    background: #243e3e;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-discover{
+	background: #0075bf;
+	color: #fff;
+}
+.btn-discover:hover{
+	background: #005890;
+	color: #ffd490;  
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 117, 191, 0.3);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+}
+.btn-whatsapp:hover {
+    background: #1ebe5d;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-primary i,
+.btn-secondary i,
+.btn-discover i,
+.btn-whatsapp i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* ================================================
+   19. COMPONENTE — iCagenda
+   ================================================ */
+   .ic-calendar-date {
+   font-size: 14px;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: 0px auto 5px auto;
+  padding: 4px;
+}
+.ic-calendar-wrapper {
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+  box-shadow: 0px 0px 10px #c2c2c2;
+}
+/* ================================================
+   20. MEDIA QUERY — Tablet (max 1024px)
+   ================================================ */
+@media (max-width: 1024px) {
+    :root {
+        --col-left-width: 38%;
+    }
+
+    .row-left {
+        padding: 2.5rem 2rem 2.5rem 2.5rem;
+    }
+
+    .row-right {
+        padding: 2.5rem 2.5rem;
+    }
+
+    .row-title {
+        font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    }
+}
+
+
+/* ================================================
+   21. MEDIA QUERY — Mobile (max 768px)
+   Layout verticale: sinistra diventa fascia
+   compatta in alto, destra scrollabile in basso.
+   ================================================ */
+@media (max-width: 768px) {
+
+    #nav-dots {
+        display: none;
+    }
+
+    #slide-counter {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 12px;
+    }
+
+    .full-row {
+        flex-direction: column;
+    }
+
+    .row-left {
+        width: 100%;
+        min-width: unset;
+        padding: 1.5rem 1.5rem 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        min-height: auto;
+        flex-shrink: 0;
+    }
+
+    /* Su mobile nasconde visual, subtitle e divider */
+    .row-left .row-visual,
+    .row-left .row-subtitle,
+    .row-left .row-divider {
+        display: none;
+    }
+
+    .row-left .row-label {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .row-left .row-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        width: 100%;
+    }
+
+    .row-right {
+        flex: 1;
+        padding: 1.25rem 1.5rem 3rem;
+        overflow-y: auto;
+    }
+
+    .right-heading {
+        font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .right-text {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    .group-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 100%;
+    }
+
+    .req-grid  { gap: 8px; }
+    .req-item  { min-width: 70px; padding: 10px 8px; }
+    .req-value { font-size: 1.2rem; }
+
+    .steps     { gap: 10px; margin-bottom: 1rem; }
+    .step-text { font-size: 12px; }
+
+    .cta-group { flex-direction: column; }
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 13px 20px;
+    }
+
+    :root {
+        --slide-offset-x: 40px;
+    }
+}
+
+
+/* ================================================
+   22. MEDIA QUERY — Small phone (max 480px)
+   ================================================ */
+@media (max-width: 480px) {
+
+    .row-left  { padding: 1rem 1.25rem; }
+    .row-right { padding: 1rem 1.25rem 3rem; }
+
+    .right-heading { font-size: 1.1rem; }
+
+    .group-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+
+    .group-name  { font-size: 0.95rem; }
+    .cf-number   { font-size: 1.4rem; letter-spacing: 0.04em; }
+
+    .faq-item,
+    .blog-item p { font-size: 12px; }
+}
+
+
+/* ================================================
+   23. ACCESSIBILITÀ
+   ================================================ */
+
+/* Focus visibile da tastiera */
+.nav-dot:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-discover:focus-visible,
+.btn-whatsapp:focus-visible {
+    outline: 3px solid var(--avis-blue);
+    outline-offset: 3px;
+}
+
+/* Riduzione movimento */
+@media (prefers-reduced-motion: reduce) {
+    .full-row .row-left,
+    .full-row .row-right,
+    .full-row.active .row-left,
+    .full-row.active .row-right,
+    .full-row.exiting .row-left,
+    .full-row.exiting .row-right {
+        transition: opacity 0.2s ease !important;
+        transform: none !important;
+    }
+
+    #progress-bar {
+        transition: none;
+    }
+}
+
