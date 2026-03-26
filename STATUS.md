@@ -1,366 +1,157 @@
-# STATUS — Dashboard Progetto Real-Time
-**avisfrosinone.it Restyling — Marzo 2026**
+STATUS.md aggiornato e corretto che riflette la realtà attuale del progetto:
+# 📊 STATUS — Dashboard Progetto Real-Time
 
-**Ultimo aggiornamento:** 26 marzo 2026, 18:30 CET  
-**Prossimo check:** 27 marzo 2026, 09:00 CET  
-**Stato generale:** 🟢 ON TRACK (4 di 6 fasi completate)
-
----
-
-## 📊 PROGRESS DASHBOARD
-
-```
-FASE COMPLETAMENTO
-
-01-research:   ██████████ 100% ✅ (25 mar - COMPLETATO)
-02-seo-geo:    ██████████ 100% ✅ (26 mar - COMPLETATO) 
-03-marketing:  ██████████ 100% ✅ (26 mar - COMPLETATO)
-04-ux:         ██████████ 100% ✅ (25 mar - COMPLETATO)
-05-copy:       ░░░░░░░░░░   0% ⏳ (BLOCCO: STATUS MERGE)
-06-dev:        ░░░░░░░░░░   0% ⏳ (BLOCCO: SCHEMA DESIGN)
-07-qc:         ░░░░░░░░░░   0% ⏳ (BLOCCO: DEV COMPLETE)
-
-TARGET: 100% entro 10 apr (16 giorni rimanenti)
-```
+**Ultimo aggiornamento:** 26 marzo 2026, 07:42 CET  
+**Prossimo check:** 27 marzo 2026, 09:00 CET
 
 ---
 
-## 🎯 KPI PRINCIPALE — MONITORA QUESTO
+## 🎯 Executive Summary
 
-| Metrica | Baseline | Target | Status | ETA |
-|---------|----------|--------|--------|-----|
-| **Prime donazioni/mese** | 8-10 | 20-30 (mese 1) | ⏳ Lancio 10 apr | 10 apr |
-| **Lead WhatsApp qual.** | 5/mese | 30/mese | ⏳ Setup GA4 | 01 apr |
-| **Posizione "donare sangue frosinone"** | #12 | #5-6 | ⏳ Post-launch | 20 apr |
-| **Citazioni AI** | 0 | 3-5/mese | ⏳ Post-launch | 15 apr |
-
----
-
-## 📈 TIMELINE DETTAGLIATA
-
-### ✅ COMPLETATO (Passato)
-
-**25 MARZO — Research Completato**
-```
-Deliverable: BENCHMARK_REPORT_2026-03.md
-Agente: Researcher (Gemini)
-Status: ✅ CONSEGNATO
-Contenuto: Analisi 15 siti AVIS + 10 siti internazionali + competitor analysis
-Impact: High — Input per tutti gli altri agenti
-```
-
-**26 MARZO — Marketing Completato**
-```
-Deliverable: CONVERSION_STRATEGY_2026-03.md
-Agente: Marketing (DeepSeek)
-Status: ✅ CONSEGNATO
-Contenuto: UVP + 4-stage funnel + CTA architecture + 10 obiezioni
-Impact: High — Definisce tone e messaging per Copywriter
-```
-
-**25 MARZO — UX Completato**
-```
-Deliverable: UX_ARCHITECTURE_2026-03.md
-Agente: UX (ChatGPT)
-Status: ✅ CONSEGNATO
-Contenuto: 5 principi + sitemap + wireframe home/prima-donazione + 5 componenti
-Impact: High — Guida per Copywriter (struttura) e Coding (implementazione)
-```
-
-**26 MARZO — SEO/AI Completato**
-```
-Deliverable: SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md
-Agente: SEO/AI (Claude PM)
-Status: ✅ CONSEGNATO (EARLY)
-Contenuto: 20 keyword + gap analysis + 55 FAQ + 6 schema.org + AI-specific opt
-Impact: CRITICO — Input per Copywriter (Sezione 4-5-6) e Coding (Sezione 3)
-```
+| Metrica | Valore |
+|---------|--------|
+| **Fasi completate** | 4/7 (57%) |
+| **Deliverable pronti** | 6/18 (33%) |
+| **Prossima milestone** | 01 apr — DEV_BRIEF completato |
+| **Launch target** | 10 apr 2026 (beta) |
 
 ---
 
-### ⏳ IN CORSO / IN CODA
+## 📋 Stato Fasi e Deliverable
 
-**27 MARZO — Dev Inizia Schema.org**
-```
-Agente: Coding (Jules)
-Attività: Implementazione JSON-LD (non aspetta copy)
-Input: SEO_GEO_STRATEGY_2026-03_v2_COMPLETA (Sezione 3)
-Output Atteso: 6 schema.org templates implementati in Joomla
-Blocco: NESSUNO (può iniziare subito)
-Scadenza: 30 mar (for integrazione con copy)
-```
-
-**28 MARZO — Copywriter Bozza Pagine Pillar**
-```
-Agente: Copywriter (Claude)
-Attività: First draft home + /dona + /prima-donazione
-Input: CONVERSION_STRATEGY + UX_ARCHITECTURE + SEO_GEO_STRATEGY
-Blocco: STATUS MERGE (attende che questo file sia su GitHub)
-Target: Condividi bozze su repo per review
-Scadenza: 29 mar EOD (full delivery)
-```
-
-**29 MARZO — Copywriter Consegna COMPLETA**
-```
-Agente: Copywriter (Claude)
-Attività: Delivery finale COPY_ALL_PAGES_2026-03.md
-Contenuto:
-  ✅ Home page
-  ✅ 4 pagine pillar (/dona, /prima-donazione, /diventa-donatore, /posso-donare)
-  ✅ 55 FAQ (short + long)
-  ✅ 5 blog articles
-  ✅ 20 meta title/description
-  ✅ Profili medici
-  ✅ CTA precompilati
-Scadenza: **29 MAR EOD** (CRITICO — non spostabile)
-Blocco: NESSUNO (input tutto disponibile)
-```
-
-**30 MARZO — Dev Integra Copy + Schema**
-```
-Agente: Coding (Jules)
-Attività: Merge copy + schema + GA4 setup
-Input: COPY_ALL_PAGES_2026-03.md (da Copywriter)
-Output Atteso: HTML templates completati
-Scadenza: 30 mar (target) / 01 apr (max slippage)
-```
-
-**01 APRILE — Dev Consegna COMPLETA**
-```
-Agente: Coding (Jules)
-Attività: Delivery finale DEV_BRIEF_2026-03.md
-Contenuto:
-  ✅ 6 schema.org implementati
-  ✅ GA4 event tracking
-  ✅ 5 componenti custom
-  ✅ HTML templates
-  ✅ CSS custom
-  ✅ JS interazioni
-  ✅ Automation
-Scadenza: **01 APR EOD** (CRITICO — non spostabile)
-```
-
-**02-05 APRILE — QC Testing**
-```
-Agente: QC Team
-Attività: Functional test + SEO audit + copy review + accessibility
-Input: Dev brief + Copy
-Output Atteso: TEST_REPORT_2026-04.md
-Scadenza: 05 apr
-Blocco: Aspetta Dev (01 apr)
-```
-
-**10 APRILE — LAUNCH BETA**
-```
-Attività: Deploy a production
-Status: 🚀 TARGET DATE
-Blocco: NESSUNO (se timeline rispettate)
-```
+| Fase | Agente | Deliverable | Stato | Scadenza | Note |
+|------|--------|-------------|-------|----------|------|
+| **00-admin** | PM | `DATA_COLLECTION_BRIEF.md` | ✅ COMPLETATO | — | Brief raccolta dati iniziale |
+| **01-research** | Researcher (Gemini) | `BENCHMARK_REPORT_2026-03.md` | ✅ COMPLETATO | 25 mar | Analisi 15+ siti AVIS Italia + international |
+| **01-research** | Researcher (Gemini) | `RESEARCH_METHODOLOGY.md` | ✅ COMPLETATO | 25 mar | Metodologia ricerca documentata |
+| **02-seo-geo** | SEO/AI (Claude PM) | `SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md` | ✅ COMPLETATO | 26 mar | 20 keyword + 55 FAQ outline + 6 schema + AI opt |
+| **02-seo-geo** | SEO/AI (Claude PM) | `KEYWORD_RESEARCH.xlsx` | ⏳ IN CODA | 27 mar | *Estrazione dati da SEO strategy* |
+| **02-seo-geo** | SEO/AI (Claude PM) | `SCHEMA_MARKUP_TEMPLATES.json` | ⏳ IN CODA | 27 mar | **⚠️ CRITICO — Blocca dev** |
+| **03-marketing** | Marketing (DeepSeek) | `CONVERSION_STRATEGY_2026-03.md` | ✅ COMPLETATO | 26 mar | Funnel 4 stadi + CTA + 10 obiezioni |
+| **03-marketing** | Marketing (DeepSeek) | `MESSAGING_VARIANTS.md` | ⏳ IN CODA | 28 mar | *Opzionale — già in CONVERSION_STRATEGY* |
+| **03-marketing** | Marketing (DeepSeek) | `EDITORIAL_CALENDAR_Q1.xlsx` | ⏳ IN CODA | 28 mar | *Opzionale — calendarizzazione* |
+| **04-ux** | UX (ChatGPT) | `UX_ARCHITECTURE_2026-03.md` | ✅ COMPLETATO | 25 mar | Sitemap + wireframe home + pagina prima donazione |
+| **04-ux** | UX (ChatGPT) | `WIREFRAMES_HOME.md` | ⏳ IN CODA | 27 mar | **⚠️ ALTA — Dettaglio 8 slide** |
+| **04-ux** | UX (ChatGPT) | `WIREFRAMES_FIRST_TIME.md` | ⏳ IN CODA | 27 mar | **⚠️ ALTA — Dettaglio pagina prima donazione** |
+| **04-ux** | UX (ChatGPT) | `COMPONENTS_SPEC.md` | ⏳ IN CODA | 27 mar | **⚠️ ALTA — Spec 5 componenti UI** |
+| **05-copy** | Copywriter (Claude) | `COPY_ALL_PAGES_2026-03.md` | ✅ COMPLETATO | 26 mar | Testi home + 4 pagine pillar + 55 FAQ + 5 blog |
+| **05-copy** | Copywriter (Claude) | `FAQ_ANSWERS_COMPLETE.md` | ⏳ IN CODA | 29 mar | *Opzionale — estrazione FAQ da COPY_ALL_PAGES* |
+| **05-copy** | Copywriter (Claude) | `MICROCOPY_ERRORS.md` | ⏳ IN CODA | 29 mar | *Opzionale — microcopy form errori* |
+| **06-dev** | Coding (Jules) | `DEV_BRIEF_2026-03.md` | ⏳ **IN CODA** | **01 apr** | **🎯 PROSSIMO FILE CRITICO** |
+| **06-dev** | Coding (Jules) | `HTML_TEMPLATES/` | ⏳ IN CODA | 01 apr | Template pagine pillar |
+| **06-dev** | Coding (Jules) | `CSS_COMPONENTS.css` | ⏳ IN CODA | 01 apr | Stili componenti custom |
+| **06-dev** | Coding (Jules) | `JS_INTERACTIONS.js` | ⏳ IN CODA | 01 apr | Interazioni JS (accordion, quiz, sticky) |
+| **07-qc** | Team QC | `TEST_REPORT_2026-04.md` | ⏳ BLOCKED | 05 apr | Attende completamento fase 06-dev |
 
 ---
 
-## 🔗 DEPENDENCY GRAPH
+## 🚨 Blocchi e Dipendenze Critiche
 
-```
-┌─ RESEARCH (25 mar) ✅
+| Blocco | Causa | Soluzione | ETA |
+|--------|-------|-----------|-----|
+| **SCHEMA_MARKUP_TEMPLATES.json mancante** | Non estratto da SEO_GEO_STRATEGY | SEO/AI Agent genera JSON-LD validi | 27 mar |
+| **WIREFRAMES dettagliati assenti** | UX_ARCHITECTURE ha wireframe ma non file separati | UX Agent crea file specifici o Coding usa UX_ARCHITECTURE | 27 mar |
+| **DEV_BRIEF non iniziato** | Attesa completamento dipendenze | Iniziare con input disponibili (SEO_GEO_STRATEGY + UX_ARCHITECTURE) | 27 mar |
+
+---
+
+## 📅 Timeline Aggiornata
+
+---
+
+## 📅 Timeline Aggiornata
+26 mar (OGGI) 07:42
+✅ BRIEF.md corretto
+✅ 4 fasi completate (research, seo-geo, marketing, ux, copy)
+⏳ SCHEMA_MARKUP_TEMPLATES.json in coda
+⏳ WIREFRAMES dettagliati in coda
+27 mar
+→ SEO/AI Agent: SCHEMA_MARKUP_TEMPLATES.json
+→ UX Agent: WIREFRAMES_HOME.md + WIREFRAMES_FIRST_TIME.md + COMPONENTS_SPEC.md
+→ Coding Agent: Inizia DEV_BRIEF_2026-03.md (usa input disponibili)
+28 mar
+→ Marketing: MESSAGING_VARIANTS.md + EDITORIAL_CALENDAR (opzionale)
+29 mar
+→ Copywriter: FAQ_ANSWERS_COMPLETE.md + MICROCOPY_ERRORS.md (opzionale)
+01 apr EOD
+→ 06-dev CONSEGNATO (DEV_BRIEF + templates + CSS + JS)
+02-05 apr
+→ QC testing + refinement
+10 apr
+🚀 LAUNCH beta avisfrosinone.it
+plain
+Copy
+
+---
+
+## 🎓 Input per Prossimo Agente (Coding — Jules)
+
+**File da leggere:**
+1. `BRIEF.md` (vincoli tecnici Joomla 6 + Helix Ultimate)
+2. `SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md` (Sezione 3: Schema.org templates)
+3. `UX_ARCHITECTURE_2026-03.md` (wireframe, componenti, mobile spec)
+4. `COPY_ALL_PAGES_2026-03.md` (testi per markup)
+
+**File da creare:**
+- `06-dev/DEV_BRIEF_2026-03.md`
+- `06-dev/HTML_TEMPLATES/` (home, prima-donazione, posso-donare, faq)
+- `06-dev/CSS_COMPONENTS.css`
+- `06-dev/JS_INTERACTIONS.js`
+
+---
+
+## 📁 Struttura Repository Attuale
+avis-frosinone-restyling/
+├── README.md ✅
+├── BRIEF.md ✅ (corretto 26 mar 07:42)
+├── STATUS.md ✅ (questo file)
 │
-├─→ MARKETING (26 mar) ✅
-│    └─→ COPYWRITER (29 mar) ⏳
-│         └─→ DEV Integration (30 mar) ⏳
-│              └─→ QC (05 apr) ⏳
-│                   └─→ LAUNCH (10 apr) 🚀
+├── 00-admin/
+│   └── DATA_COLLECTION_BRIEF.md ✅
 │
-├─→ UX (25 mar) ✅
-│    ├─→ COPYWRITER (29 mar) ⏳ [input struttura]
-│    └─→ DEV (27 mar inizio) ⏳ [input wireframe + componenti]
-│         └─→ DEV Complete (01 apr) ⏳
-│              └─→ QC (05 apr) ⏳
-│                   └─→ LAUNCH (10 apr) 🚀
+├── 01-research/
+│   ├── BENCHMARK_REPORT_2026-03.md ✅
+│   └── RESEARCH_METHODOLOGY.md ✅
 │
-└─→ SEO/AI (26 mar) ✅
-     ├─→ COPYWRITER (29 mar) ⏳ [input FAQ outline + meta]
-     ├─→ DEV (27 mar inizio) ⏳ [input schema.org]
-     └─→ COPYWRITER Tone (29 mar) ⏳ [input AI-specific]
-```
-
-**Percorso Critico:** MARKETING → COPYWRITER → DEV → QC → LAUNCH
-
-Se Copywriter slippa 2 giorni:
-- Dev slippa 2 giorni
-- QC slippa 2 giorni
-- Launch è a rischio (CONTENUTO)
-
----
-
-## ⚠️ BLOCCHI ATTUALI
-
-### BLOCCO #1: Repository Non Aggiornato
-**Severity:** 🔴 CRITICO  
-**Causa:** README + BRIEF + STATUS + Deliverable doc non su GitHub  
-**Impatto:** Agenti non vedono struttura, duplicazione lavoro  
-**Soluzione:** PM (tu) pushari tutto adesso  
-**Timeline:** SUBITO (30 min)  
-**Owner:** Project Manager (tu)
-
-```
-AZIONI IMMEDIATE:
-1. Clone repo: git clone https://github.com/MarkBlackBlue/avis-frosinone-restyling.git
-2. Copia tutto da /home/claude/avis-repo-structure/ in repo locale
-3. git add .
-4. git commit -m "00-setup: Repository structure + README + BRIEF + STATUS (initial) — 26 mar 2026"
-5. git push origin main
-```
-
-### BLOCCO #2: Copywriter Aspetta STATUS Merge
-**Severity:** 🟠 MEDIO  
-**Causa:** Copywriter vuol vedre struttura del progetto prima di partire  
-**Impatto:** Slippage 1-2 ore (non critico)  
-**Soluzione:** Merge STATUS.md adesso  
-**Timeline:** 1-2 ore  
-**Owner:** Project Manager (tu)
+├── 02-seo-geo/
+│   ├── SEO_GEO_STRATEGY_2026-03_v2_COMPLETA.md ✅
+│   ├── KEYWORD_RESEARCH.xlsx ⏳ (vuoto/segnaposto)
+│   └── SCHEMA_MARKUP_TEMPLATES.json ⏳ (da creare)
+│
+├── 03-marketing/
+│   ├── CONVERSION_STRATEGY_2026-03.md ✅
+│   ├── MESSAGING_VARIANTS.md ⏳ (vuoto/segnaposto)
+│   └── EDITORIAL_CALENDAR_Q1.xlsx ⏳ (vuoto/segnaposto)
+│
+├── 04-ux/
+│   ├── UX_ARCHITECTURE_2026-03.md ✅
+│   ├── WIREFRAMES_HOME.md ⏳ (vuoto/segnaposto)
+│   ├── WIREFRAMES_FIRST_TIME.md ⏳ (vuoto/segnaposto)
+│   └── COMPONENTS_SPEC.md ⏳ (vuoto/segnaposto)
+│
+├── 05-copy/
+│   ├── COPY_ALL_PAGES_2026-03.md ✅
+│   ├── FAQ_ANSWERS_COMPLETE.md ⏳ (vuoto/segnaposto)
+│   └── MICROCOPY_ERRORS.md ⏳ (vuoto/segnaposto)
+│
+├── 06-dev/
+│   ├── DEV_BRIEF_2026-03.md ⏳ NON ESISTE — DA CREARE
+│   ├── HTML_TEMPLATES/ ⏳ NON ESISTE — DA CREARE
+│   ├── CSS_COMPONENTS.css ⏳ NON ESISTE — DA CREARE
+│   └── JS_INTERACTIONS.js ⏳ NON ESISTE — DA CREARE
+│
+└── assets-current/
+├── home.html (sito attuale)
+└── custom.css (CSS attuale)
+plain
+Copy
 
 ---
 
-## 📋 CHECKLIST IMMEDIATA — Prossime 24 ore
+## 🎯 Prossima Azione Consigliata
 
-### PER PROJECT MANAGER (Tu)
-
-**ENTRO OGGI (26 mar 18:00 CET):**
-- [ ] Clone repo GitHub
-- [ ] Copia file repo structure in locale
-- [ ] Crea branches per ogni agente (05-copy-26mar, 06-dev-26mar, ecc.)
-- [ ] Push README + BRIEF + STATUS
-- [ ] Notifica Copywriter: "Repo aggiornato, puoi iniziare"
-- [ ] Notifica Dev: "Schema.org templates pronti in Sezione 3, inizia subito"
-
-**DOMANI (27 mar 09:00 CET):**
-- [ ] Check Dev ha iniziato schema.org
-- [ ] Verifica nessun blocco Copywriter
-- [ ] Update STATUS.md (avanzamento)
-
-### PER COPYWRITER (Claude)
-
-**BLOCCO IMMEDIATO:** Aspetta merge STATUS.md (1-2 ore max)
-
-**APPENA MERGE:**
-- [ ] Leggi BRIEF.md (10 min)
-- [ ] Leggi SEO_GEO_STRATEGY Sezione 4-5-6 (20 min)
-- [ ] Leggi CONVERSION_STRATEGY (15 min)
-- [ ] Leggi UX_ARCHITECTURE Sezione 3 (15 min)
-- [ ] Crea file `/05-copy/COPY_ALL_PAGES_2026-03.md`
-- [ ] Inizia Home page (scadenza Sezione 1)
-- [ ] Parallelamente: Scrivi 55 FAQ (scadenza Sezione 2)
-
-**DEADLINE:** 29 mar EOD
-
-### PER DEV (Jules)
-
-**BLOCCO:** NESSUNO — Puoi partire SUBITO
-
-**AZIONI IMMEDIATE (27 mar 09:00):**
-- [ ] Leggi BRIEF.md (10 min)
-- [ ] Leggi SEO_GEO_STRATEGY Sezione 3 (schema.org) (20 min)
-- [ ] Leggi UX_ARCHITECTURE Sezione 3 (wireframe home) (15 min)
-- [ ] Crea file `/06-dev/DEV_BRIEF_2026-03.md`
-- [ ] Sezione 1: Implementa MedicalWebPage + LocalBusiness (prima prioriy)
-- [ ] Parallelo: Setup GA4 event tracking (non-dipendente da copy)
-
-**DEADLINE:** 01 apr EOD
-
----
-
-## 🔴 RISCHI IDENTIFICATI
-
-| Rischio | Probability | Impact | Mitigation |
-|---------|------------|--------|-----------|
-| Copywriter slippa deadline (29 mar) | 🟡 MEDIA (30%) | 🔴 CRITICO | Backup copy template, Coding fa bozza da SEO_GEO FAQ outline |
-| Dev incontra problema Joomla schema.org | 🟡 MEDIA (25%) | 🟠 ALTO | Fallback: CSS comment schema.org, Joomla plugin ricerca |
-| QC trova bugs critico (31 mar-05 apr) | 🟢 BASSA (10%) | 🔴 CRITICO | Extra 3-5 giorni slippage, launch 13-15 apr invece 10 |
-| Copywriter non capisce "AI-specific tone" | 🟡 MEDIA (20%) | 🟡 MEDIO | PM fornisce esempi concreti, revision loop 1-2 round |
-
----
-
-## 📊 METRICHE SETTIMANALI (Tracking)
-
-### SETTIMANA 1: 25-29 Marzo
-**Obbiettivo:** 5 di 6 fasi consegnate (manca QC)
-
-| Metrica | Target | Status | Note |
-|---------|--------|--------|------|
-| Research completato | 100% | ✅ 100% | On time |
-| Marketing completato | 100% | ✅ 100% | On time |
-| UX completato | 100% | ✅ 100% | On time |
-| SEO completato | 100% | ✅ 100% | EARLY (+1 gg) |
-| Copy avanzamento | 20% | ⏳ 0% | Attesa merge (OK) |
-| Dev avanzamento | 20% | ⏳ 5% | Schema.org started |
-| Repository aggiornato | 100% | ⏳ 10% | IN CORSO |
-
-### SETTIMANA 2: 30 Mar - 05 Aprile
-**Obbiettivo:** Copy + Dev completati, QC iniziato
-
-| Metrica | Target | Status | Note |
-|---------|--------|--------|------|
-| Copy completato | 100% | ⏳ Target 29 mar |  |
-| Dev completato | 100% | ⏳ Target 01 apr |  |
-| QC avanzamento | 80% | ⏳ Target 05 apr |  |
-| Deploy staging | 100% | ⏳ Target 05 apr |  |
-
-### SETTIMANA 3: 06-10 Aprile
-**Obbiettivo:** QC fine, Deploy production
-
-| Metrica | Target | Status | Note |
-|---------|--------|--------|------|
-| QC completato | 100% | ⏳ Target 05 apr |  |
-| AVIS Review | Approved | ⏳ Target 07 apr |  |
-| Deploy prod | Done | ⏳ Target 10 apr |  |
-| Monitoring setup | 100% | ⏳ Target 10 apr |  |
-
----
-
-## 📞 ESCALATION CONTACTS
-
-**Se qualcosa blocca:**
-
-| Situazione | Contatta | Urgenza |
-|-----------|----------|---------|
-| Copy-blocking issue | PM (Claude) | ALTA |
-| Dev tech issue (Joomla) | Tech Admin AVIS | ALTA |
-| Copy review request | PM (Claude) | MEDIA |
-| SEO question | PM (Claude) | MEDIA |
-
----
-
-## 🔄 COME AGGIORNARE QUESTO FILE
-
-**Frequenza:** Giornaliera (09:00 CET)
-
-**Chi:** Project Manager
-
-**Template update:**
-```markdown
-### UPDATE — [DATA] [AGENTE]
-Status: [Cosa fatto]
-Blocchi: [Nuovi blocchi?]
-Prossimo: [Cosa aspettarsi domani]
-```
-
----
-
-## 📝 UPDATE LOG
-
-### 26 MAR 18:30 — Setup Iniziale
-```
-✅ Completati: Research, Marketing, UX, SEO
-⏳ In coda: Copy (blocco STATUS merge), Dev, QC
-🎯 Timeline: ON TRACK
-⚠️ Risk: Copy deadline 29 mar (CRITICO)
-👉 Next: PM pubblica repo con README + BRIEF + STATUS
-```
-
-### [Aggiungi qui gli update futuri]
-
----
-
-**Dashboard aggiornata continuamente — Consulta ogni giorno.**
-
-*Ultima sincronizzazione: 26 marzo 2026, 18:30 CET*
+**Oggi (26 mar, dopo correzione BRIEF):**
+1. ✅ Commit STATUS.md aggiornato
+2. 🔄 Notificare SEO/AI Agent per SCHEMA_MARKUP_TEMPLATES.json (27 mar AM)
+3. 🔄 Notificare UX Agent per WIREFRAMES dettagliati (27 mar AM)
+4. 🚀 **Assegnare Coding Agent (Jules) per DEV_BRIEF_2026-03.md** — può iniziare subito usando UX_ARCHITECTURE come riferimento wireframe
