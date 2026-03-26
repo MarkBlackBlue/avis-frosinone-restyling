@@ -135,10 +135,10 @@ avis-frosinone-restyling/
 │   └── MICROCOPY_ERRORS.md ⏳ (vuoto/segnaposto)
 │
 ├── 06-dev/
-│   ├── DEV_BRIEF_2026-03.md ⏳ NON ESISTE — DA CREARE
-│   ├── HTML_TEMPLATES/ ⏳ NON ESISTE — DA CREARE
-│   ├── CSS_COMPONENTS.css ⏳ NON ESISTE — DA CREARE
-│   └── JS_INTERACTIONS.js ⏳ NON ESISTE — DA CREARE
+│   ├── DEV_BRIEF_2026-03.md ✅
+│   ├── HTML_TEMPLATES/ ✅
+│   ├── CSS_COMPONENTS.css ✅
+│   └── JS_INTERACTIONS.js ✅
 │
 └── assets-current/
 ├── home.html (sito attuale)
