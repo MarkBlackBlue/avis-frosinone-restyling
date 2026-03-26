@@ -12,7 +12,7 @@ Conversione WhatsApp-first — Ridurre attrito da form complessi
 Rassicurazione Gen Z — Affrontare barriere specifiche (paura aghi, tatuaggi, farmaci)
 ________________________________________
 2. CONTESTO CLIENTE
-2.1 Chi è AVIS Comunale di Frosinone
+ 2.1 Chi è AVIS Comunale di Frosinone
 Sezione comunale dell'Associazione Volontari Italiani del Sangue
 Missione: Promuovere la cultura della donazione volontaria, gratuita e anonima del sangue e del plasma
 Attività: Raccolte sangue, banchetti informativi, attività scolastiche, formazione volontari, eventi beneficenza
@@ -20,7 +20,7 @@ Contatto operativo: WhatsApp/Tel. +39 377 490 1081
 Codice Fiscale: 92001460606 (usato per il 5×1000)
 Partner istituzionali: Seeweb (hosting/tech), Duferco Energia
 Team: 20-30 volontari formati, coordinamento con ASL e ospedali locali
-2.2 Situazione Attuale
+ 2.2 Situazione Attuale
 Table
 Elemento	Stato
 URL	https://avisfrosinone.it
