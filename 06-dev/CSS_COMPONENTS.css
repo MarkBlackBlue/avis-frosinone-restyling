@@ -1,0 +1,257 @@
+/* ==========================================================================
+   CSS_COMPONENTS.css - AVIS Frosinone Restyling
+   Componenti custom ottimizzati per Helix Ultimate e Joomla 6
+   ========================================================================== */
+
+/* 1. WHATSAPP STICKY (Mobile focus) */
+.whatsapp-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.whatsapp-sticky i {
+    color: #fff;
+    font-size: 32px;
+}
+
+.whatsapp-sticky:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-sticky.urgency {
+    background-color: #E63946;
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(230, 57, 70, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+}
+
+@media (min-width: 1025px) {
+    .whatsapp-sticky { bottom: 30px; right: 30px; }
+}
+
+/* 2. BLOOD STOCK BAR */
+.blood-stock-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.stock-item {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stock-group {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.stock-level {
+    height: 8px;
+    width: 100%;
+    background: #eee;
+    margin-top: 8px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stock-level::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.stock-item[data-level="green"] .stock-level::after { width: 100%; background: #28a745; }
+.stock-item[data-level="yellow"] .stock-level::after { width: 50%; background: #ffc107; }
+.stock-item[data-level="red"] .stock-level::after { width: 20%; background: #dc3545; }
+
+/* 3. IMPACT COUNTER */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.counter-item {
+    text-align: center;
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--avis-red);
+    display: block;
+}
+
+.counter-label {
+    font-size: 1rem;
+    color: var(--text-medium);
+    font-weight: 600;
+}
+
+/* 4. ELIGIBILITY QUIZ */
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.quiz-step { display: none; }
+.quiz-step.active { display: block; animation: fadeIn 0.5s ease; }
+
+.quiz-question {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.quiz-options {
+    display: flex;
+    gap: 15px;
+}
+
+.quiz-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    background: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quiz-btn:hover { border-color: var(--avis-red); color: var(--avis-red); }
+
+.quiz-result {
+    text-align: center;
+    padding: 20px;
+}
+
+/* 5. DONOR TESTIMONIAL */
+.testimonial-slider {
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+    min-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-inner {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-bottom: 4px solid var(--avis-blue);
+}
+
+.card-quote { font-style: italic; line-height: 1.6; margin-bottom: 15px; }
+.card-author { font-weight: 700; color: var(--text-dark); }
+
+/* 6. FULL-PAGE SLIDER LAYOUT */
+.full-row {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.full-row.active {
+    pointer-events: auto;
+    z-index: 2;
+    opacity: 1;
+}
+
+.row-left {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    background-color: var(--avis-red);
+    color: #fff;
+}
+
+.row-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    background-color: #fff;
+    transform: translateX(50px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+}
+
+.full-row.active .row-right {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.full-row.exiting .row-right {
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+/* ANIMAZIONI */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE SLIDER OVERRIDES */
+@media (max-width: 768px) {
+    .full-row { flex-direction: column; }
+    .row-left { width: 100%; height: 30vh; padding: 1.5rem; }
+    .row-right { width: 100%; height: 70vh; padding: 1.5rem; transform: translateY(30px); }
+    .full-row.active .row-right { transform: translateY(0); }
+}

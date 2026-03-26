@@ -37,11 +37,11 @@ STATUS.md aggiornato e corretto che riflette la realtà attuale del progetto:
 | **05-copy** | Copywriter (Claude) | `COPY_ALL_PAGES_2026-03.md` | ✅ COMPLETATO | 26 mar | Testi home + 4 pagine pillar + 55 FAQ + 5 blog |
 | **05-copy** | Copywriter (Claude) | `FAQ_ANSWERS_COMPLETE.md` | ⏳ IN CODA | 29 mar | *Opzionale — estrazione FAQ da COPY_ALL_PAGES* |
 | **05-copy** | Copywriter (Claude) | `MICROCOPY_ERRORS.md` | ⏳ IN CODA | 29 mar | *Opzionale — microcopy form errori* |
-| **06-dev** | Coding (Jules) | `DEV_BRIEF_2026-03.md` | ⏳ **IN CODA** | **01 apr** | **🎯 PROSSIMO FILE CRITICO** |
-| **06-dev** | Coding (Jules) | `HTML_TEMPLATES/` | ⏳ IN CODA | 01 apr | Template pagine pillar |
-| **06-dev** | Coding (Jules) | `CSS_COMPONENTS.css` | ⏳ IN CODA | 01 apr | Stili componenti custom |
-| **06-dev** | Coding (Jules) | `JS_INTERACTIONS.js` | ⏳ IN CODA | 01 apr | Interazioni JS (accordion, quiz, sticky) |
-| **07-qc** | Team QC | `TEST_REPORT_2026-04.md` | ⏳ BLOCKED | 05 apr | Attende completamento fase 06-dev |
+| **06-dev** | Coding (Jules) | `DEV_BRIEF_2026-03.md` | ✅ COMPLETATO | 27 mar | Sviluppo tecnico e documentazione completata |
+| **06-dev** | Coding (Jules) | `HTML_TEMPLATES/` | ✅ COMPLETATO | 27 mar | Template per 5 pagine pillar (8 slide home) |
+| **06-dev** | Coding (Jules) | `CSS_COMPONENTS.css` | ✅ COMPLETATO | 27 mar | Stili per 5 componenti custom e slider |
+| **06-dev** | Coding (Jules) | `JS_INTERACTIONS.js` | ✅ COMPLETATO | 27 mar | Logica slider, quiz, FAQ, GA4 e testimonianze |
+| **07-qc** | Team QC | `TEST_REPORT_2026-04.md` | 🚀 PRONTO | 05 apr | In attesa di review e test funzionali |
 
 ---
 
@@ -135,10 +135,10 @@ avis-frosinone-restyling/
 │   └── MICROCOPY_ERRORS.md ⏳ (vuoto/segnaposto)
 │
 ├── 06-dev/
-│   ├── DEV_BRIEF_2026-03.md ⏳ NON ESISTE — DA CREARE
-│   ├── HTML_TEMPLATES/ ⏳ NON ESISTE — DA CREARE
-│   ├── CSS_COMPONENTS.css ⏳ NON ESISTE — DA CREARE
-│   └── JS_INTERACTIONS.js ⏳ NON ESISTE — DA CREARE
+│   ├── DEV_BRIEF_2026-03.md ✅
+│   ├── HTML_TEMPLATES/ ✅
+│   ├── CSS_COMPONENTS.css ✅
+│   └── JS_INTERACTIONS.js ✅
 │
 └── assets-current/
 ├── home.html (sito attuale)
