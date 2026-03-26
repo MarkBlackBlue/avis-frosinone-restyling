@@ -1,0 +1,115 @@
+
+<script>
+(function() {
+	'use strict';
+
+	function initHome() {
+	var rows = document.querySelectorAll('.full-row');
+	var dots = document.querySelectorAll('.nav-dot');
+	var counter = document.getElementById('slide-counter');
+	var progressBar = document.getElementById('progress-bar');
+	var logoImg = document.querySelector('.logo-img');
+
+	if (!rows || rows.length === 0) return;
+
+	var current = 0;
+	var isAnimating = false;
+	var total = rows.length;
+
+	function goTo(index) {
+		if (isAnimating || index === current || index < 0 || index >= total) return;
+		isAnimating = true;
+
+		if (logoImg) {
+		if (index === 0) {
+			setTimeout(function() {
+			logoImg.style.opacity = '1';
+			logoImg.style.transform = 'translateY(0)';
+			}, 100);
+		} else {
+			logoImg.style.opacity = '0';
+			logoImg.style.transform = 'translateY(20px)';
+		}
+		}
+
+		rows[current].classList.remove('active');
+		rows[current].classList.add('was-active');
+		setTimeout(function() {
+		if (rows[current]) rows[current].classList.remove('was-active');
+		}, 500);
+
+		current = index;
+		rows[current].classList.add('active');
+
+		dots.forEach(function(d, i) {
+		d.classList.toggle('active', i === current);
+		});
+
+		if (counter) counter.textContent = (current + 1) + ' / ' + total;
+
+		if (progressBar) {
+		progressBar.style.width = (((current + 1) / total) * 100) + '%';
+		progressBar.setAttribute('aria-valuenow', current + 1);
+		}
+
+		setTimeout(function() { isAnimating = false; }, 600);
+	}
+
+	/* Logo iniziale */
+	if (logoImg) {
+		setTimeout(function() {
+		logoImg.style.opacity = '1';
+		logoImg.style.transform = 'translateY(0)';
+		}, 200);
+	}
+
+	/* Progress bar iniziale */
+	if (progressBar) {
+		progressBar.style.width = ((1 / total) * 100) + '%';
+	}
+
+	/* WHEEL */
+	var wheelTimer = null;
+	window.addEventListener('wheel', function(e) {
+		if (wheelTimer) return;
+		wheelTimer = setTimeout(function() { wheelTimer = null; }, 700);
+		goTo(e.deltaY > 0 ? current + 1 : current - 1);
+	}, { passive: true });
+
+	/* KEYBOARD */
+	window.addEventListener('keydown', function(e) {
+		var key = e.key || e.keyCode;
+		if (key === 'ArrowDown' || key === 'PageDown' || key === 40 || key === 34) goTo(current + 1);
+		if (key === 'ArrowUp' || key === 'PageUp' || key === 38 || key === 33) goTo(current - 1);
+		if (key === 'Home' || key === 36) goTo(0);
+		if (key === 'End' || key === 35) goTo(total - 1);
+	});
+
+	/* NAV DOTS */
+	dots.forEach(function(dot) {
+		dot.addEventListener('click', function() {
+		goTo(parseInt(dot.getAttribute('data-index'), 10));
+		});
+	});
+
+	/* TOUCH SWIPE */
+	var touchStartY = 0;
+	window.addEventListener('touchstart', function(e) {
+		touchStartY = e.touches[0].clientY;
+	}, { passive: true });
+
+	window.addEventListener('touchend', function(e) {
+		var diff = touchStartY - e.changedTouches[0].clientY;
+		if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+	}, { passive: true });
+	}
+
+	/* Compatibile con Joomla + MooTools + jQuery */
+	if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initHome);
+	} else {
+	initHome();
+	}
+
+}());
+</script>
