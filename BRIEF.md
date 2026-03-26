@@ -12,7 +12,7 @@ Conversione WhatsApp-first — Ridurre attrito da form complessi
 Rassicurazione Gen Z — Affrontare barriere specifiche (paura aghi, tatuaggi, farmaci)
 ________________________________________
 2. CONTESTO CLIENTE
- 2.1 Chi è AVIS Comunale di Frosinone
+2.1 Chi è AVIS Comunale di Frosinone
 Sezione comunale dell'Associazione Volontari Italiani del Sangue
 Missione: Promuovere la cultura della donazione volontaria, gratuita e anonima del sangue e del plasma
 Attività: Raccolte sangue, banchetti informativi, attività scolastiche, formazione volontari, eventi beneficenza
@@ -24,7 +24,6 @@ Team: 20-30 volontari formati, coordinamento con ASL e ospedali locali
 Table
 Elemento	Stato
 URL	https://avisfrosinone.it
-
 CMS	Joomla 6 (upgradato dal 5)
 Template	Helix Ultimate (custom CSS)
 Traffico stimato	100-150 visite/mese
